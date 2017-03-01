@@ -21,3 +21,21 @@ public static int[] twoSum(int[] nums, int target) {
         }
 		return null;
     }
+//好的解法
+
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+    int[] result = new int[2];
+    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    for (int i = 0; i < numbers.length; i++) {
+        if (map.containsKey(target - numbers[i])) {
+            result[1] = i ;
+            result[0] = map.get(target - numbers[i]);
+            return result;
+        }
+        map.put(numbers[i], i);
+    }
+    return result;
+  }
+}
+//是每遍历一个就放在Map里，遍历一遍就足够，完全的用空间换时间
